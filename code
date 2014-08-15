@@ -1,0 +1,43 @@
+filename = 'fileToBeRead.cp'
+DG0 = cPickle.load(file(filename))
+DG = DG0['gains']
+srcnames = sorted(DG.keys())
+myf = open('visualization/webpage/bin/testing.npy','r+')
+ >>>> Need to transfer file to bin directory <<<<<
+# loop thru all the srcnames
+for i in range(0,len(srcnames)):
+	
+	myf.write("srcname " +str(i)+" ")
+	# gets keys and puts it into an array
+	keys = sorted(DG[srcnames[i]]['solutions'].keys())
+	
+	for j in range(0,len(keys)):
+		myf.write("ant " +str(j))
+		# gets value at srcnames[i] and keys[j]
+		ant = DG[srcnames[i]]['solutions'][keys[j]]
+		for amountOfSubArrays in range(0,len(ant)):
+		# checks whether the array is empty(0) or non-empty(!0)
+		*
+		try: length = len(ant[amountOfSubArrays])
+		except TypeError: length = 0 
+		if length > 0:
+			for subElements in range(0,len(ant[amountOfSubArrays])):
+		*		try: length = len(ant[amountOfSubArrays][subElements])
+				except TypeError: length = 0 
+				if length > 0:
+				myf.write("\n")
+				count = 1
+				for indiElements in range(0,len(ant[amountOfSubArrays][subElements])):
+					if count < 4:
+						myf.write(str(ant[amountOfSubArrays][subElements][indiElements]) + " ")	
+					else:
+						myf.write(str(ant[amountOfSubArrays][subElements][indiElements]) + "\n")	
+				count++	
+		else:
+			myf.write("\n0\n")
+
+## Format of array
+#	srcname i ant j:
+#	ant j+1:
+##
+myf.close()
