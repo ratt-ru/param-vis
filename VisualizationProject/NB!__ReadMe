@@ -1,0 +1,17 @@
+To run the code type: java -jar runCode.jar
+Then simply input the .cp file you wish to view, might help having the file in the current directory where the runCode and finalCode are.
+
+You may encounter some errors, here are the walkarounds to such:
+
+1) If you get an error along the lines of "there is no swt-gtk-3740", firstly type "sudo apt-get install libswt-gtk-3-jni libswt-gtk-3-java" then
+"sudo cp /usr/lib/jni/libswt-*3740.so ~/.swt/lib/linux/x86_64/".
+You need to make sure that you have the libswt-*3740.so files before you copy them into the path.
+If you are unable to find the libswt-*3740.so files, go to elwood and type "cd /usr/lib/jni/" and simply copy the *3740 files from here.
+Main reason of this error is that the elwood version of the libswt is not the same as the machine trying to run the code.
+Here is a link for more information regarding this problem... http://askubuntu.com/questions/125150/unsatisfied-link-error-and-missing-so-files-when-starting-eclipse
+
+2) If you get an error saying "Error: Null" and a blank Summary GUI is displayed, then the file is unable to load the matplotlib import.
+Simple way to test if this is the case is to run the finalCode.py i.e python finalCode.py, and see if the error says unable to import
+matplotlib as it does not exist.
+To fix this problem simply type "sudo apt-get build-dep python-matplotlib". 
+Here is the link to find out further details... http://matplotlib.org/faq/installing_faq.html#install-from-git 																																				
